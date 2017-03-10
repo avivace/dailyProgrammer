@@ -1,0 +1,83 @@
+<!--
+dailyProgrammer - (c) Antonio Vivace, 2016
+admin@avivace.ovh
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Daily Programmer</title>
+
+  <!-- CSS  -->
+  <style>
+  body {
+      word-wrap: break-word !important;
+    }
+  </style>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body bgcolor="#F2F1EF">
+    <div class="navbar-fixed">
+      <nav class="grey lighten-1">
+        <div class="nav-wrapper">
+          <!-- Navbar -->
+          <a href="#!" class="brand-logo black-text " style="    font-weight: 300; font-size: 1.5rem;">Challenges</a>
+
+          <!-- Side Menu -->
+          <a href="#" data-activates="mobile-demo" class="button-collapse black-text"><i style="font-size: 1.5rem" class="material-icons">&nbsp;&nbsp;menu</i></a>
+          <ul class="side-nav" id="mobile-demo">
+
+
+            <li><a href="" style="font-size: 1.7em; font-weight: 300;"class="subheader">Daily Programmer</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="index.html"><img height="32px" width="32px" src="assets/ic_view_day_black_48dp.png" style="inline-block; vertical-align: -20%;">&nbsp;Challenges</a></li>
+
+
+            <li><a href="#"><img height="32px" width="32px" src="assets/ic_favorite_border_black_48dp.png" style="inline-block; vertical-align: -20%;">&nbsp;Saved</a></li>
+
+
+            <li><a href="credits.html"><img height="32px" width="32px" src="assets/ic_info_outline_black_48dp.png" style="inline-block; vertical-align: -20%;"></img>&nbsp;About</a></li>
+
+
+
+            <!--<li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>-->
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  <!-- Tabs TODO: colored tab titles? (on select)-->
+  <div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#all">All</a></li>
+      <li class="tab col s3"><a href="#easy">Easy</a></li>
+      <li class="tab col s3"><a href="#med">Medium</a></li>
+      <li class="tab col s3"><a href="#hard">Hard</a></li>
+    </ul>
+  </div>
+
+  <div id="all" class="col s12"></div>
+  <div id="easy" class="col s12"></div>
+  <div id="med" class="col s12"></div>
+  <div id="hard" class="col s12"></div>
+
+  <div id="test"></div>
+
+  <!--  Scripts  -->
+  <script src="js/jquery.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/front.js"></script>
+  <script src="js/analytics.js"></script>
+  
+  </body>
+</html>
