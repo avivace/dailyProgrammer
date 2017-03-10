@@ -24,9 +24,16 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+if (getParameterByName('after')){
+  var after_string = getParameterByName('after');
+}
+else {
+  var after_string = ''
+}
 
+console.log(after_string);
 $.getJSON(
-  "https://www.reddit.com/r/dailyprogrammer/new.json",
+  "https://www.reddit.com/r/dailyprogrammer/new.json"+after_string,
   function foo(data)
   {
     var ci = parseInt(getParameterByName('i'));

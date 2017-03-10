@@ -64,105 +64,120 @@ function htmlDecode(input){
   e.innerHTML = input;
     return e.childNodes.lenght === 0 ? "" : e.childNodes[0].nodeValue;
   }
+var after_string;
+function renderChallenges(after){
+    $.getJSON(
+    "https://www.reddit.com/r/dailyprogrammer/new.json" + after,
+    function foo(data)
+    {
+      $.each(
+        data.data.children.slice(0, 100),
+        function (i, post) {
+          if (post.data.title.indexOf('Challenge') !== -1 || post.data.title.indexOf('Weekly') !== -1){
+            var card_style = 'red';
+            var diff = 'HARD';
+            if (post.data.title.indexOf('Easy') !== -1) {
+              card_style='green';
+              diff='EASY';
+            } else if (post.data.title.indexOf('Intermediate') !== -1) {
+              card_style='orange';
+              diff='MEDIUM';
+            } else if (post.data.title.indexOf('Weekly') !== -1) {
+              card_shttps://developer.mozilla.org/?en-US/docs/Web/JavaScript/Reference/Errors/Not_defined?utm_source=mozilla&utm_medium=firefox-console-errors&utm_campaign=defaulttyle='blue';
+              diff='WEEKLY';
+            }
+            
+            if (after_string) {
+              var link = 'chall.html?i='+i+'&after='+after_string;
+            }
+            else{
+              var link = 'chall.html?i='+i;
+            }
+            var header = post.data.title.substring(27, post.data.title.lenght).replace("[Easy]", '').replace("[Easy/Med]", '').replace("[Easy/Intemerdiate]", '').replace("[Easy/Intermediate]", '').replace("[Hard]", '').replace("[Intermediate]", '');
+            var body = removeMd(post.data.selftext).replace('Description','').substring(0,300)+ ' ...';
 
-$.getJSON(
-  "https://www.reddit.com/r/dailyprogrammer/new.json",
-  function foo(data)
-  {
-    $.each(
-      data.data.children.slice(0, 100),
-      function (i, post) {
+            // Weekly
+            if (card_style == 'blue') header = post.data.title.substring(13, post.data.title.lenght);
 
-        if (post.data.title.indexOf('Challenge') !== -1 || post.data.title.indexOf('Weekly') !== -1){
-          var card_style = 'red';
-          var diff = 'HARD';
-          if (post.data.title.indexOf('Easy') !== -1) {
-            card_style='green';
-            diff='EASY';
-          } else if (post.data.title.indexOf('Intermediate') !== -1) {
-            card_style='orange';
-            diff='MEDIUM';
-          } else if (post.data.title.indexOf('Weekly') !== -1) {
-            card_style='blue';
-            diff='WEEKLY';
+            // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+            // Let's build the card
+            if (card_style == 'white'){
+              var card_color = 'white';
+              var text_color = 'black-text';
+            }
+            else if (card_style == 'red') {
+              var card_color = 'white';
+              var text_color = 'black-text';
+              var diff_col = '#F22613'; 
+            }
+            else if (card_style == 'green') {
+              var diff_col = '#26C281'; 
+              var card_color = 'white';
+              var text_color = 'black-text';
+
+            }
+            else if (card_style == 'orange') {
+              var diff_col = '#D35400'; 
+              var card_color = 'white';
+              var text_color = 'black-text';
+            }
+            else if (card_style == 'blue') {
+              var diff_col = 'blue'; 
+              var card_color = 'white';
+              var text_color = 'black-text';
+            }
+
+            var p1 = '<div id='+'"CH'+i+'"'+'class="card ';
+
+            var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
+
+            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'"><a  style="color: black; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+
+            var idd = after_string +'_'+ i;
+            $("#all").append('<div id="'+idd.substring(7, idd.lenght)+'">'+card+'</div>');
+            
+            $("#"+idd.substring(7, idd.lenght)).click(function(e){
+              //e.preventDefault();
+              window.location = link;    
+            });
+            
+
+            var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'<a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> </b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+
+
+            if (post.data.title.indexOf('Easy') !== -1) {
+              $("#easy").append('<div id="a'+i+'">'+card_nodiff+'</div>');
+            } else if (post.data.title.indexOf('Intermediate') !== -1) {
+              $("#med").append('<div id="a'+i+'">'+card_nodiff+'</div>');
+            } else if (post.data.title.indexOf('Hard') !== -1) {
+              $("#hard").append('<div id="a'+i+'">'+card_nodiff+'</div>');
+            }
+
+            $("#a"+i).click(function(e){
+              //e.preventDefault();
+              window.location = link;    
+            });
+
+
+            /*$("#cc").append('<div class="row">  <div class="col s12 m6"><div class="card blue-grey darken-1">  <div class="card-content white-text">');
+            $("#cc").append('<span class="card-title">'+ header + '</span>');
+            $("#cc").append('<p>Description PLACEHOLDER</p> </div> <div class="card-action"> <a href="#">GO TO CHALLENGE</a> </div> </div>  </div> </div>');
+
+            $("#cards").append('  <div class="card card-'+diff_col+'"> <div class="card-main"> <div class="card-inner"> <p class="card-heading" id="heading2">'+ header +'</p> <p>'+ body + '</p> </div> <div class="card-action"> <div class="card-action-btn pull-left"> <a class="btn btn-flat waves-attach" href="'+ link +'">&nbsp;GO TO CHALLENGE<span class="icon margin-left-sm">open_in_new</span></a></div></div></div> </div>');*/
           }
-          
-          var link = 'chall.html?i='+i;
-          var header = post.data.title.substring(27, post.data.title.lenght).replace("[Easy]", '').replace("[Easy/Intermediate]", '').replace("[Hard]", '').replace("[Intermediate]", '');
-          var body = removeMd(post.data.selftext).replace('Description','').substring(0,300)+ ' ...';
-
-          // Weekly
-          if (card_style == 'blue') header = post.data.title.substring(13, post.data.title.lenght);
-
-          // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-
-          // Let's build the card
-
-
-          if (card_style == 'white'){
-            var card_color = 'white';
-            var text_color = 'black-text';
-          }
-          else if (card_style == 'red') {
-            var card_color = 'white';
-            var text_color = 'black-text';
-            var diff_col = '#F22613'; 
-          }
-          else if (card_style == 'green') {
-            var diff_col = '#26C281'; 
-            var card_color = 'white';
-            var text_color = 'black-text';
-
-          }
-          else if (card_style == 'orange') {
-            var diff_col = '#D35400'; 
-            var card_color = 'white';
-            var text_color = 'black-text';
-          }
-          else if (card_style == 'blue') {
-            var diff_col = 'blue'; 
-            var card_color = 'white';
-            var text_color = 'black-text';
-          }
-
-          var p1 = '<div class="card ';
-
-          var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
-
-          var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'"><a  style="color: black; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
-
-          $("#all").append('<div id="'+i+'">'+card+'</div>');
-          $("#"+i).click(function(e){
-            //e.preventDefault();
-            window.location = link;    
-          });
-          
-
-          var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'<a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> </b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
-
-
-          if (post.data.title.indexOf('Easy') !== -1) {
-            $("#easy").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-          } else if (post.data.title.indexOf('Intermediate') !== -1) {
-            $("#med").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-          } else if (post.data.title.indexOf('Hard') !== -1) {
-            $("#hard").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-          }
-
-          $("#a"+i).click(function(e){
-            //e.preventDefault();
-            window.location = link;    
-          });
-
-
-          /*$("#cc").append('<div class="row">  <div class="col s12 m6"><div class="card blue-grey darken-1">  <div class="card-content white-text">');
-          $("#cc").append('<span class="card-title">'+ header + '</span>');
-          $("#cc").append('<p>Description PLACEHOLDER</p> </div> <div class="card-action"> <a href="#">GO TO CHALLENGE</a> </div> </div>  </div> </div>');
-
-          $("#cards").append('	<div class="card card-'+diff_col+'"> <div class="card-main"> <div class="card-inner"> <p class="card-heading" id="heading2">'+ header +'</p> <p>'+ body + '</p> </div> <div class="card-action"> <div class="card-action-btn pull-left"> <a class="btn btn-flat waves-attach" href="'+ link +'">&nbsp;GO TO CHALLENGE<span class="icon margin-left-sm">open_in_new</span></a></div></div></div> </div>');*/
         }
+      )
+      after_string = '?after='+ data.data.after;
+    }
+  )
+}
 
-      }
-    )
-  }
-)
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+       //alert("bottom!");
+       renderChallenges(after_string);
+   }
+});
+
+renderChallenges('');
