@@ -13,7 +13,8 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link id="styleSheet" href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
 
 </head>
 
@@ -21,7 +22,7 @@
     <div class="navbar-fixed">
       <nav class="grey lighten-1">
         <div class="nav-wrapper">
-          <a href="#!" id="title" class="brand-logo black-text" style="    font-weight: 300; font-size: 1.5rem;"> Settings </a>
+          <a href="#!" style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo">Settings</a>
           <a href="index.html" class="black-text"><i style="font-size: 32px" class="material-icons">&nbsp;&nbsp;chevron_left</i></a>
         </div>
       </nav>
@@ -33,12 +34,28 @@
   <br>
   <form action="#">
       <a style="font-size:24px"> Theme:
-      <input name="group1" type="radio" id="test1" />
-      <label style="font-size:24px" for="test1">Light</label>
-      <input name="group1" type="radio" id="test2" />
-      <label style="font-size:24px" for="test2">Dark</label>
+      <input name="group1" type="radio" id="light" />
+      <label style="font-size:24px" for="light">Light</label>
+      <input name="group1" type="radio" id="dark" />
+      <label style="font-size:24px" for="dark">Dark</label>
       </a>
+      <br>
+      <a class="black-text">The dark theme uses the Monokai color scheme for code blocks.</a>
+
   </form>
+
+  <!-- Switch 
+  <div class="switch">
+  <a style="font-size:24px"> Enable Alpha version </a>
+    <label>
+      
+      <input checked="false" type="checkbox">
+      <span class="lever"></span>
+    </label>
+  </div>
+  -->
+  <br>
+  <a id="sub" onclick="apply()" class="waves-effect waves-light btn">Apply</a>
   
 
 </div>
@@ -49,6 +66,6 @@
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
   <script src="js/analytics.js"></script>
-  
+  <script src="js/settings.js"></script>
   </body>
 </html>

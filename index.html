@@ -15,15 +15,14 @@ admin@avivace.ovh
       word-wrap: break-word !important;
     }
   </style>
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-  <!-- Fonts -->
+    <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link id="styleSheet" href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
 
-<body bgcolor="#F2F1EF">
+<body>
   <nav class="grey lighten-1">
     <div class="nav-wrapper">
       <a href="#!" style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo">dailyProgrammer</a>
@@ -35,10 +34,10 @@ admin@avivace.ovh
         <li><a href="mobile.html">Mobile</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="index.html"><img height="32px" width="32px" src="assets/ic_view_day_black_48dp.png" style="inline-block; vertical-align: -20%;">&nbsp;Challenges</a></li>
-            <!--<li><a href="#"><img height="32px" width="32px" src="assets/ic_favorite_border_black_48dp.png" style="inline-block; vertical-align: -20%;">&nbsp;Saved</a></li>-->
-            <li><a href="settings.html"><img height="32px" width="32px" src="assets/settings.png" style="inline-block; vertical-align: -20%;">&nbsp;Settings</a></li>
-            <li><a href="credits.html"><img height="32px" width="32px" src="assets/ic_info_outline_black_48dp.png" style="inline-block; vertical-align: -20%;"></img>&nbsp;About</a></li>
+        <br>
+        <li><a class="black-text" href="index.html"><i class="black-text sidebar-icons material-icons">view_agenda</i>Challenges</a></li>
+        <li><a class="black-text" href="settings.html"><i class="black-text sidebar-icons material-icons">settings</i>Settings</a></li>
+        <li><a class="black-text" href="credits.html"><i class="black-text sidebar-icons material-icons">info</i>About</a></li>
       </ul>
     </div>
   </nav>
@@ -63,7 +62,7 @@ admin@avivace.ovh
   <div id="test"></div>
   <div id="loading" style="text-align: center">
     <br><br><br>
-    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+    <i class="loading fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
     <span class="sr-only">Loading...</span>
   </div>
 
@@ -71,6 +70,7 @@ admin@avivace.ovh
   <script src="js/jquery.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/styler.js"></script>
   <script src="js/front.js"></script>
   <script src="js/analytics.js"></script>
   <script src="https://use.fontawesome.com/0eaed8d23a.js"></script>

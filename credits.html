@@ -13,7 +13,7 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link id="styleSheet" href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
 
@@ -21,7 +21,7 @@
     <div class="navbar-fixed">
       <nav class="grey lighten-1">
         <div class="nav-wrapper">
-          <a href="#!" id="title" class="brand-logo black-text" style="    font-weight: 300; font-size: 1.5rem;"> About </a>
+          <a href="#!" style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo">About</a>
           <a href="index.html" class="black-text"><i style="font-size: 32px" class="material-icons">&nbsp;&nbsp;chevron_left</i></a>
         </div>
       </nav>
@@ -29,7 +29,7 @@
 
 
   <div class="row">
-  <div class="col s12">
+  <div class="text col s12">
     <br>
     <img src="assets/2.jpg" width="128px" height="128px">
     <br>
@@ -41,9 +41,23 @@
     Developed by <a href="http://avivace.ovh" target="_blank">Antonio Vivace</a>, 2016 - 2017. All rights reserved. <br>
     The challenges (and the solutions) are from the <a href="http://www.reddit.com/r/dailyprogrammer" target="_blank">/r/dailyprogrammer</a> subreddit. The icon was designed by Davide Maniaci.
     <br>
-    <code> APK_v1.1 RELEASE - WebApp_v0.6 BETA </code>
-    <h4> Open Source Licences </h4>
-    This app is possible thanks to the following software: materializecss, highlight.js, jQuery, reddit API. The complete list of licences is available here.
+    <code> APK_v1.1 RELEASE - WebApp_v0.7 BETA </code>
+    <h4> Third Party Licenses </h4>
+    This app is possible thanks to the following fantastic software: materializecss, highlight.js, jQuery, reddit API, Google Material Icons, Font Awesome.
+    <br>The complete list of licenses is available <a>here</a>.
+    <h4> Changelog </h4>
+    <h5> Web App </h5>
+    <b>0.7 - 3/11/2017 </b> Added the <i>Settings</i> page and a dark theme global theme. Added internal notifications for updates.
+    <br>
+    <b>0.6 - 3/10/2017 </b> Added <i>See More</i> feature (and animation). Scroll down to the bottom to see more. Added the changelog in Credits page.
+    <br>
+    <b>0.5 - 1/1/2017 </b> Added <i>Solutions</i>. Tuned up the style of titles and padding on challenges page.
+    <br>
+    <b>0.4 - 5/11/2016 </b> Added <i>Sorting</i> for difficulty (tabs). Clicking anywhere on the card now opens the challenge.
+    <h5> APK</h5>
+    <b>1.0 - 1/1/2017</b> Scroll to refresh, opens some links out of the app.
+    <br>
+    <b>1.0 - 1/9/2016</b> Initial Release.
 
 </div>
 </div>
@@ -52,6 +66,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/styler.js"></script>
   <script src="js/analytics.js"></script>
   
   </body>

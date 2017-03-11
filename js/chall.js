@@ -56,7 +56,7 @@ $.getJSON(
             //Slice & Print
             for (var i = 0; i <sol_i; i++) {
 
-              $('#solution').append("<a style='color: black; font-size: 24px'>Solution "+(i+1)+"</a> by ");
+              $('#solution').append("<h2>Solution "+(i+1)+"</h2> by ");
               $('#solution').append(htmlDecode(comments[1].data.children[i].data.author));
               $('#solution').append(htmlDecode(comments[1].data.children[i].data.body_html));
               if (i < sol_i-1)

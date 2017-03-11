@@ -128,11 +128,18 @@ function renderChallenges(after){
               var text_color = 'black-text';
             }
 
+            
+            var title_color = 'black';
+            if (dark){
+              card_color = 'black'
+              text_color = 'white-text'
+              title_color = 'white'
+            }
             var p1 = '<div id='+'"CH'+i+'"'+'class="card ';
 
             var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
-            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'"><a  style="color: black; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
 
             var idd = after_string +'_'+ i;
             $("#all").append('<div id="'+idd.substring(7, idd.lenght)+'">'+card+'</div>');
@@ -180,4 +187,14 @@ $(window).scroll(function() {
    }
 });
 
+function notifyUpdate(){
+  vs = localStorage.getItem("version");
+  if (vs < actual_version){
+    Materialize.toast('Application updated to version 0.7! Enjoy the new features', 5000)
+  }
+  localStorage.setItem("version", actual_version);
+}
+
+actual_version = 7;
+notifyUpdate();
 renderChallenges('');
