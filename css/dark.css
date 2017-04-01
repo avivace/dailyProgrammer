@@ -27,9 +27,13 @@ samp {
   background-color: #fff;
 }
 
-.card .card-content .card-title {
+.card-title {
   line-height: 90%;
 }
+.card .card-content {
+  padding: 10px;
+}
+
 
 h1 {
   font-size: 2.0rem;

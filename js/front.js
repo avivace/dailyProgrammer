@@ -64,7 +64,9 @@ function htmlDecode(input){
   e.innerHTML = input;
     return e.childNodes.lenght === 0 ? "" : e.childNodes[0].nodeValue;
   }
+
 var after_string;
+
 function renderChallenges(after){
     $.getJSON(
     "https://www.reddit.com/r/dailyprogrammer/new.json" + after,
@@ -83,7 +85,7 @@ function renderChallenges(after){
               card_style='orange';
               diff='MEDIUM';
             } else if (post.data.title.indexOf('Weekly') !== -1) {
-              card_shttps://developer.mozilla.org/?en-US/docs/Web/JavaScript/Reference/Errors/Not_defined?utm_source=mozilla&utm_medium=firefox-console-errors&utm_campaign=defaulttyle='blue';
+              card_style='blue';
               diff='WEEKLY';
             }
             
@@ -97,7 +99,7 @@ function renderChallenges(after){
             var body = removeMd(post.data.selftext).replace('Description','').substring(0,300)+ ' ...';
 
             // Weekly
-            if (card_style == 'blue') header = post.data.title.substring(13, post.data.title.lenght);
+            if (card_style == 'blue') header = post.data.title.substring(0, post.data.title.lenght);
 
             // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
@@ -139,7 +141,7 @@ function renderChallenges(after){
 
             var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
-            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
 
             var idd = after_string +'_'+ i;
             $("#all").append('<div id="'+idd.substring(7, idd.lenght)+'">'+card+'</div>');

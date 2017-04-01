@@ -4,13 +4,12 @@ var d =document.getElementById('dark');
 function drawCurrentSetting(){
     style = localStorage.getItem("style"); 
     console.log(style);
-    if (style==1) {
-        l.checked = true;
-        console.log("drawinLightRadio");
-    }
-    if (style==2) {
+    if (style==2){
         d.checked = true;
-        console.log("drawingDarkRadio");
+    }
+    else {
+        style = 1;
+        l.checked = true;
     }
 }   
 
@@ -26,14 +25,13 @@ function apply() {
 function styler(attr){
     var href;
     switch (attr) {
-        case '1':
-            href = "css/style.css";
-            break;
         case '2':
             href = "css/dark.css";
             console.log("df");
             break;
-        default:;break;
+        default:
+            href = "css/style.css";
+            break;
     }
     document.getElementById('styleSheet').href = href;
 }
