@@ -186,14 +186,27 @@ $(window).scroll(function() {
    }
 });
 
+function hideN(){
+  localStorage.setItem("hideN", true);
+  hidePost();
+}
+
+function hidePost(){
+  if (localStorage.getItem("hideN")){
+    var Post = document.getElementById('notification');
+    Post.style.display='none';
+  }
+}
+
 function notifyUpdate(){
   vs = localStorage.getItem("version");
   if (vs < actual_version){
-    Materialize.toast('Application updated to version 0.7! Enjoy the new features', 5000)
+    Materialize.toast('Application updated to version 0.8! Enjoy the new features', 5000)
   }
   localStorage.setItem("version", actual_version);
 }
 
-actual_version = 7;
+actual_version = 8;
 notifyUpdate();
 renderChallenges('');
+hidePost();
