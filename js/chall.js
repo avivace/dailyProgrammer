@@ -41,8 +41,8 @@ $.getJSON(
     $.each (
       data.data.children.slice(ci,ci+1),
       function (i, post) {
-        $('#title2').append('Challenge #'+ post.data.title.substring(24,27));
-        $('#title').append('Challenge #'+ post.data.title.substring(24,27));
+        $('#navbar-title').append('Challenge #'+ post.data.title.substring(24,27));
+        document.title = 'Challenge #'+ post.data.title.substring(24,27);
 
         $('#problem').append(htmlDecode(post.data.selftext_html));
         $('#problem').append('Challenge created by <b>' +post.data.author+'</b>');
