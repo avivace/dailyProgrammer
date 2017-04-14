@@ -19,14 +19,20 @@
 </head>
 
 <body>
-    <div class="navbar-fixed">
-      <nav class="grey lighten-1">
-        <div class="nav-wrapper">
-          <a href="#!" style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo">Settings</a>
-          <a href="index.html" class="black-text"><i style="font-size: 32px" class="material-icons">&nbsp;&nbsp;chevron_left</i></a>
-        </div>
-      </nav>
+  <!-- NAVBAR -->
+  <nav class="grey lighten-1">
+    <div class="nav-wrapper">
+      <a style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo center">dailyProgrammer</a>
+      <!-- Mobile -->
+      <a href="index.html" class="left hide-on-large-only black-text"><i style="font-size: 24px" class="material-icons">&nbsp;chevron_left</i></a>
+      <!-- Full-width -->
+      <ul class="right hide-on-med-and-down">
+        <li><a class="black-text" href="index.html"><i class="material-icons left">view_agenda</i>Challenges</a></li>
+        <li class="active"><a class="black-text" href="settings.html"><i class="material-icons left">settings</i>Settings</a></li>
+        <li><a class="black-text" href="credits.html"><i class="material-icons left">info</i>About</a></li>
+      </ul>
     </div>
+  </nav>
 
 
   <div class="row">
@@ -54,6 +60,14 @@
     </label>
   </div>
   -->
+  <div class="switch">
+  <a style="font-size:24px"> Enable Code Highlightning </a>
+    <label>
+      
+      <input checked="false" type="checkbox">
+      <span class="lever"></span>
+    </label>
+  </div>
   <br>
   <a id="sub" onclick="apply()" class="waves-effect waves-light btn">Apply</a>
   

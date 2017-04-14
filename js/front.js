@@ -101,7 +101,7 @@ function renderChallenges(after){
             // Weekly
             if (card_style == 'blue') header = post.data.title.substring(0, post.data.title.lenght);
 
-            // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            // border-bottom: 1px solidf rgba(0, 0, 0, 0.12);
 
             // Let's build the card
             if (card_style == 'white'){
@@ -137,11 +137,12 @@ function renderChallenges(after){
               text_color = 'white-text'
               title_color = 'white'
             }
-            var p1 = '<div id='+'"CH'+i+'"'+'class="card ';
+            var p1 = '<div id='+'"CH'+i+'"'+'class="col s12 m6 card ';
 
-            var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
+            //var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
             var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+            var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
 
             var idd = after_string +'_'+ i;
             $("#all").append('<div id="'+idd.substring(7, idd.lenght)+'">'+card+'</div>');
@@ -150,10 +151,6 @@ function renderChallenges(after){
               //e.preventDefault();
               window.location = link;    
             });
-            
-
-            var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'<a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> </b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
-
 
             if (post.data.title.indexOf('Easy') !== -1) {
               $("#easy").append('<div id="a'+i+'">'+card_nodiff+'</div>');

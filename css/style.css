@@ -71,6 +71,23 @@ h6 {
 
 .tabs {
   font-weight: bold;
+  color: red;
+}
+
+/* !important shouldn't be here */
+.tabs.tabs-transparent .tab a,
+.tabs.tabs-transparent .tab.disabled a,
+.tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgba(50, 50, 50, 0.7) !important;
+}
+
+.tabs.tabs-transparent .tab a:hover,
+.tabs.tabs-transparent .tab a.active {
+  color: rgba(0, 0, 0, 1) !important;
+}
+
+.tabs.tabs-transparent .indicator {
+  background-color: rgba(150, 150, 150, 1) !important;
 }
 
 .sidebar-icons {

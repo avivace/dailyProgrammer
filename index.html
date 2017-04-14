@@ -1,5 +1,5 @@
 <!--
-dailyProgrammer - (c) Antonio Vivace, 2016
+dailyProgrammer - (c) Antonio Vivace, 2016-2017
 admin@avivace.ovh
 -->
 <!DOCTYPE html>
@@ -15,24 +15,27 @@ admin@avivace.ovh
       word-wrap: break-word !important;
     }
   </style>
-    <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link id="styleSheet" href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link id="styleSheet" href="" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
 <body>
-  <nav class="grey lighten-1">
+  <!-- NAVBAR -->
+  <nav class="nav-extended grey lighten-1">
     <div class="nav-wrapper">
-      <a href="#!" style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo">dailyProgrammer</a>
+      <a style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo center">dailyProgrammer</a>
+      <!-- Mobile -->
       <a href="#" data-activates="mobile-demo" class="black-text button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li class="active"><a class="black-text" href="index.html"><i class="material-icons left">view_agenda</i>Challenges</a></li>
+        <li><a class="black-text" href="settings.html"><i class="material-icons left">settings</i>Settings</a></li>
+        <li><a class="black-text" href="credits.html"><i class="material-icons left">info</i>About</a></li>
       </ul>
+      <!-- Full-width -->
       <ul class="side-nav" id="mobile-demo">
         <br>
         <li><a class="black-text" href="index.html"><i class="black-text sidebar-icons material-icons">view_agenda</i>Challenges</a></li>
@@ -40,30 +43,31 @@ admin@avivace.ovh
         <li><a class="black-text" href="credits.html"><i class="black-text sidebar-icons material-icons">info</i>About</a></li>
       </ul>
     </div>
+    <div class="nav-content">
+      <ul class="black-text tabs tabs-transparent hide-on-med-and-up">
+        <li class="tab col s3"><a class="active" href="#all">All</a>
+        </li>
+        <li class="tab col s3"><a href="#easy">Easy</a></li>
+        <li class="tab col s3"><a href="#med">Medium</a></li>
+        <li class="tab col s3"><a href="#hard">Hard</a></li>
+      </ul>
+    </div>
   </nav>
          
 
   <!-- Tabs TODO: colored tab titles? (on select)-->
   <div class="row">
-  <div class="col s12">
-    <ul class="tabs">
-      <li class="tab col s3"><a class="active" href="#all">All</a></li>
-      <li class="tab col s3"><a href="#easy">Easy</a></li>
-      <li class="tab col s3"><a href="#med">Medium</a></li>
-      <li class="tab col s3"><a href="#hard">Hard</a></li>
-    </ul>
-  </div>
+    <div id="all" class="col s12"></div>
+    <div id="easy" class="row"></div>
+    <div id="med" class="row"></div>
+    <div id="hard" class="row"></div>
 
-  <div id="all" class="col s12"></div>
-  <div id="easy" class="col s12"></div>
-  <div id="med" class="col s12"></div>
-  <div id="hard" class="col s12"></div>
-
-  <div id="test"></div>
-  <div id="loading" style="text-align: center">
-    <br><br><br>
-    <i class="loading fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-    <span class="sr-only">Loading...</span>
+    <div id="test"></div>
+    <div id="loading" style="text-align: center">
+      <br><br><br>
+      <i class="loading fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 
   <!--  Scripts  -->
