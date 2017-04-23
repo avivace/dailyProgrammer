@@ -7,18 +7,28 @@ function styler(attr){
     case '1':
       theme = "css/style.css";
       hl_theme = "css/hl_default.css"
+      try {
+        Android.sbColor(255,158,158,158);
+      } catch (e) {
+        console.log('not running in a android webview');
+      }
       dark = false;
       break;
     case '2':
       theme= "css/dark.css";
       hl_theme = "css/monokai.css"
+      try {
+        Android.sbColor(255,0,0,0);
+      } catch (e) {
+        console.log('not running in a android webview');
+      }
       dark = true;
       break;
     }
     document.getElementById('styleSheet').href = theme;
     if (document.title == "Challenge")
       document.getElementById('hl_styleSheet').href = hl_theme;
-  }
+}
 
 // localStorage.clear(); 
 style = localStorage.getItem("style"); 

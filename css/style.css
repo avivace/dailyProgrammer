@@ -20,17 +20,43 @@ samp {
 
 .card-panel {
   transition: box-shadow .25s;
-  padding: 20px;
-  margin: 0.5rem 0 1rem 0;
+  padding: 0px;
+  margin: 0rem 0 0rem 0;
   border-radius: 2px;
   background-color: #fff;
 }
-
+.blue-grey{
+  padding: 10px;
+  margin: 1rem 0 1rem 0;
+}
 .card-title {
+  
   line-height: 90%;
 }
 .card .card-content {
-  padding: 10px;
+  padding: 0px;
+}
+
+.card {
+  position: relative;
+  margin: 0.4rem 0 0.4rem 0;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.chip {
+  display:inline-block;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0 0px;
+  border-radius: 16px;
+  background-color: white;
+  margin-bottom: 5px;
+  margin-right: 0px;
 }
 
 h1 {

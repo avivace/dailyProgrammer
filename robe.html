@@ -1,0 +1,25 @@
+<html>
+<head>
+	<script type="text/javascript">
+    function test(){
+      var max = 255;
+      var min = 0;
+			var a = Math.random() * (max - min) + min;
+      var b = Math.random() * (max - min) + min;
+      var c = Math.random() * (max - min) + min;
+      Android.sbColor(255,a,b,c);
+      //Android.sbColor(255,a,b,c);
+		}
+    function test2(){
+      Android.sharer("A test string");
+    }
+</script>
+
+</head>
+<body>
+	<h1> JSInterface Testing </h1>
+	<a onClick="test()">StatusBarColor</a>
+  <br>
+  <a onClick="test2()">Sharer</a>
+</body>
+</html>

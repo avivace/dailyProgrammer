@@ -22,21 +22,6 @@ function apply() {
     Materialize.toast('Settings applied', 4000)
 }
 
-function styler(attr){
-    var href;
-    switch (attr) {
-        case '2':
-            href = "css/dark.css";
-            console.log("df");
-            break;
-        default:
-            href = "css/style.css";
-            break;
-    }
-    document.getElementById('styleSheet').href = href;
-}
-
-
 drawCurrentSetting();
 style = localStorage.getItem("style"); 
 styler(style);

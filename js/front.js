@@ -77,16 +77,16 @@ function renderChallenges(after){
         function (i, post) {
           if (post.data.title.indexOf('Challenge') !== -1 || post.data.title.indexOf('Weekly') !== -1){
             var card_style = 'red';
-            var diff = 'HARD';
+            var diff = '<i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i>';
             if (post.data.title.indexOf('Easy') !== -1) {
               card_style='green';
-              diff='EASY';
+              diff='<i style="font-size:12px" class=" material-icons">lens</i>';
             } else if (post.data.title.indexOf('Intermediate') !== -1) {
               card_style='orange';
-              diff='MEDIUM';
+              diff='<i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i>';
             } else if (post.data.title.indexOf('Weekly') !== -1) {
               card_style='blue';
-              diff='WEEKLY';
+              diff='<i style="font-size:12px" class=" material-icons">lens</i>';
             }
             
             if (after_string) {
@@ -120,12 +120,12 @@ function renderChallenges(after){
 
             }
             else if (card_style == 'orange') {
-              var diff_col = '#D35400'; 
+              var diff_col = 'orange'; 
               var card_color = 'white';
               var text_color = 'black-text';
             }
             else if (card_style == 'blue') {
-              var diff_col = 'blue'; 
+              var diff_col = 'lightblue'; 
               var card_color = 'white';
               var text_color = 'black-text';
             }
@@ -141,7 +141,7 @@ function renderChallenges(after){
 
             //var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
-            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
             var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
 
             var idd = after_string +'_'+ i;
@@ -188,6 +188,7 @@ $(window).scroll(function() {
 
 function hideN(){
   localStorage.setItem("hideN", true);
+  Materialize.toast('You can still find those links in the About page', 5000)
   hidePost();
 }
 
@@ -206,7 +207,7 @@ function notifyUpdate(){
   localStorage.setItem("version", actual_version);
 }
 
-actual_version = 8;
+actual_version = 9;
 notifyUpdate();
 renderChallenges('');
 hidePost();

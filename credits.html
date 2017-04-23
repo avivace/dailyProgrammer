@@ -33,6 +33,11 @@
     </div>
   </nav>
 
+    <div class="fixed-action-btn">
+    <a onclick="shareApp()" class="btn-floating btn-large red">
+      <i class="large material-icons">share</i>
+    </a>
+  </div>
 
   <div class="row">
   <div class="text col s12">
@@ -41,23 +46,36 @@
     <br>
     Thank you for trying this application! Keep in mind that this is an early release and I've still a lot of features to implement. <br>
     Send your feedback and suggestions at <a href="https://twitter.com/avivace4" target="_blank"> @avivace4 </a> or <code> admin (at) avivace.ovh </code><br>
-    This app is totally free and has no ad. Please consider supporting it by leaving a review on the <a href="https://play.google.com/store/apps/details?id=avivace.daily_programmer" target="_blank">Play Store</a>.
-    <br>
+    This app is totally free and has no ad. Please consider supporting it by leaving a review on the <a href="https://play.google.com/store/apps/details?id=avivace.daily_programmer" target="_blank">Play Store</a> and sharing it with other fellow coders.
+    <br><br>
     <h2>Community </h2>
-    Thank you everybody! We are more than 2000 weekly users, let's build a community and discuss the challenges, compare solutions, provide feedback on this application and talk about nerd stuff. Keep up the good work!<br>
+    <br>
     <h4>
     <a target="_blank" href="https://t.me/dailyprogrammer">Telegram Chat</a>
     <br><br>
     <a target="_blank" href="https://discord.gg/feXdA9V">Discord Server</a>
     </h4>
+    <br>
     <h2>Credits </h2>
+    <br>
     Developed by <a href="http://avivace.ovh" target="_blank">Antonio Vivace</a>, 2016 - 2017. All rights reserved. <br>
     The challenges (and the solutions) are from the <a href="http://www.reddit.com/r/dailyprogrammer" target="_blank">/r/dailyprogrammer</a> subreddit. The icon was designed by Davide Maniaci.
     <br>
-    <code> APK_v1.2 RELEASE - WebApp_v0.8 BETA </code>
+    <b>Testers</b>: manux, bino.
+    <br>
+    <code> APK_v1.3 DEBUG - WebApp_v0.9 BETA </code>
     <h4><a href="licenses.html" target="_blank">Third Party Licenses</a></h4>
     <h3> Changelog </h3>
     <h4> Web App </h4>
+     <b>0.9 - 4/23/2017 </b> <br>
+    Android status bar will be affected by the theme.<br>
+    New loading animation.<br>
+    Added <i>Share app</i> button in About page.<br>
+    Difficulty labels are now colored dots.<br>
+    Reduced margins. Higher UI density.<br>
+
+    <br><br>
+
     <b>0.8 - 4/14/2017 </b> <br>
     More compact cards, a bit higher text density. <br>
     Fixed a bug loading the light theme for a splitsecond even on the dark theme. <br>
@@ -83,6 +101,11 @@
 
     <br><br>
     <h4> APK</h4>
+    <br>
+
+    <b>1.3 - 4/23/2017</b> <br>
+    Support for native Android actions (status bar theming, sharer)<br>
+    <br>
 
     <b>1.2 - 3/11/2016</b> <br>
     Fixed a bug preventing the use of HTML5 webstorage.
@@ -104,6 +127,7 @@
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/credits.js"></script>
   <script src="js/analytics.js"></script>
   
   </body>
