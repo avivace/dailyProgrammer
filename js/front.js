@@ -202,7 +202,7 @@ function hidePost(){
 function notifyUpdate(){
   vs = localStorage.getItem("version");
   if (vs < actual_version){
-    Materialize.toast('Application updated to version 0.8! Enjoy the new features', 5000)
+    Materialize.toast('Application updated to version 0.9! Enjoy the new features', 5000)
   }
   localStorage.setItem("version", actual_version);
 }
