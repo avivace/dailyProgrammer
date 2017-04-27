@@ -1,0 +1,28 @@
+body {
+	background-color: #f5f5f5;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: Hack, "Hack", monospace, monospace;
+  font-size: 1em;
+  background-color:#f5f5f5;
+  border:0px solid #dadada;
+  border-radius:2px;
+}
+
+.chip {
+  background-color: white;
+}
+
+.tabs.tabs-transparent .tab a,
+.tabs.tabs-transparent .tab.disabled a,
+.tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgba(50, 50, 50, 0.7);
+}
+
+.tabs.tabs-transparent .tab a:hover,
+.tabs.tabs-transparent .tab a.active {
+  color: rgba(0, 0, 0, 1) !important;
+}

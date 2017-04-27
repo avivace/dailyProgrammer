@@ -16,7 +16,8 @@ admin@avivace.ovh
     }
   </style>
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link id="styleSheet" href="" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="" id="styleSheet" type="text/css" rel="stylesheet" media="screen,projection"/>
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,11 +26,11 @@ admin@avivace.ovh
 
 <body>
   <!-- NAVBAR -->
-  <nav class="nav-extended grey lighten-1">
+  <nav id="nav" class="nav-extended grey lighten-1">
     <div class="nav-wrapper">
       <a style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo center">dailyProgrammer</a>
       <!-- Mobile -->
-      <a href="#" data-activates="mobile-demo" class="black-text button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" onlick="sideNav()" data-activates="mobile-demo" class="black-text button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li class="active"><a class="black-text" href="index.html"><i class="material-icons left">view_agenda</i>Challenges</a></li>
         <li><a class="black-text" href="settings.html"><i class="material-icons left">settings</i>Settings</a></li>
@@ -38,9 +39,9 @@ admin@avivace.ovh
       <!-- Full-width -->
       <ul class="side-nav" id="mobile-demo">
         <br>
-        <li><a class="black-text" href="index.html"><i class="black-text sidebar-icons material-icons">view_agenda</i>Challenges</a></li>
-        <li><a class="black-text" href="settings.html"><i class="black-text sidebar-icons material-icons">settings</i>Settings</a></li>
-        <li><a class="black-text" href="credits.html"><i class="black-text sidebar-icons material-icons">info</i>About</a></li>
+        <li class="sn-element"><a class="black-text" href="index.html"><i class="black-text sidebar-icons material-icons">view_agenda</i>Challenges</a></li>
+        <li class="sn-element"><a class="black-text" href="settings.html"><i class="black-text sidebar-icons material-icons">settings</i>Settings</a></li>
+        <li class="sn-element"><a class="black-text" href="credits.html"><i class="black-text sidebar-icons material-icons">info</i>About</a></li>
       </ul>
     </div>
     <div class="nav-content">
@@ -130,6 +131,8 @@ admin@avivace.ovh
   <script src="js/jquery-3.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/hammer.min.js"></script>
+  <script src="js/hammer-time.min.js"></script>
   <script src="js/front.js"></script>
   <script src="js/analytics.js"></script>
   <script src="https://use.fontawesome.com/0eaed8d23a.js"></script>

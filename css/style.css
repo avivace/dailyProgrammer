@@ -4,33 +4,20 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
-body {
-	background-color: #f5f5f5;
-}
-code,
-kbd,
-pre,
-samp {
-  font-family: Hack, "Hack", monospace, monospace;
-  font-size: 1em;
-  background-color:#f5f5f5;
-  border:0px solid #dadada;
-  border-radius:2px;
-}
 
 .card-panel {
   transition: box-shadow .25s;
   padding: 0px;
-  margin: 0rem 0 0rem 0;
+  margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff;
 }
+
 .blue-grey{
   padding: 10px;
   margin: 1rem 0 1rem 0;
 }
 .card-title {
-  
   line-height: 90%;
 }
 .card .card-content {
@@ -54,7 +41,6 @@ samp {
   line-height: 32px;
   padding: 0 0px;
   border-radius: 16px;
-  background-color: white;
   margin-bottom: 5px;
   margin-right: 0px;
 }
@@ -97,19 +83,6 @@ h6 {
 
 .tabs {
   font-weight: bold;
-  color: red;
-}
-
-/* !important shouldn't be here */
-.tabs.tabs-transparent .tab a,
-.tabs.tabs-transparent .tab.disabled a,
-.tabs.tabs-transparent .tab.disabled a:hover {
-  color: rgba(50, 50, 50, 0.7) !important;
-}
-
-.tabs.tabs-transparent .tab a:hover,
-.tabs.tabs-transparent .tab a.active {
-  color: rgba(0, 0, 0, 1) !important;
 }
 
 .tabs.tabs-transparent .indicator {
@@ -120,4 +93,38 @@ h6 {
   font-size: 36px;
   position: relative;
   left: 20px;
+}
+
+#sidenav-overlay {
+  height: 100%;
+  /* Android webview workaround (vh not working) */
+}
+
+.side-nav {
+  position: fixed;
+  width: 230px;
+}
+
+.side-nav ul li{
+  position: relative;
+  left: -20px;
+  margin: 0px;
+}
+
+.sn-element{
+  position: relative;
+  left: -20px;
+  margin: 0px;
+}
+
+/* Tab bar light styling (avoid flashing) */
+.tabs.tabs-transparent .tab a,
+.tabs.tabs-transparent .tab.disabled a,
+.tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgba(50, 50, 50, 0.7);
+}
+
+.tabs.tabs-transparent .tab a:hover,
+.tabs.tabs-transparent .tab a.active {
+  color: rgba(0, 0, 0, 1) !important;
 }

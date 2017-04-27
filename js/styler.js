@@ -5,7 +5,7 @@ function styler(attr){
   switch(attr){
     default:
     case '1':
-      theme = "css/style.css";
+      theme = "css/light.css";
       hl_theme = "css/hl_default.css"
       try {
         Android.sbColor(255,158,158,158);
