@@ -128,3 +128,11 @@ h6 {
 .tabs.tabs-transparent .tab a.active {
   color: rgba(0, 0, 0, 1) !important;
 }
+
+.row {
+  margin-bottom: 0px;
+}
+
+.row .col {
+  padding: 0 0.5rem;
+}
