@@ -1,0 +1,23 @@
+{
+  "name": "daily_programmer",
+  "version": "0.10.0",
+  "description": "daily coding challenges, a /r/dailyprogrammer frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/avivace/dailyProgrammer.git"
+  },
+  "author": "Antonio Vivace",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/avivace/dailyProgrammer/issues"
+  },
+  "homepage": "https://gitlab.com/avivace/dailyProgrammer#README",
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "grunt": "^1.0.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "daily_programmer",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Antonio Vivace"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://avivace.ovh",
+  "private": true
+}
