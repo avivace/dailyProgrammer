@@ -5,8 +5,12 @@
       Renders the challenge list, with title and a description peek for every
       challenge.
 
-      0.4
+      0.10
 */
+
+var after_string;
+var loading = 0;
+var cp = 0;
 
 // Markdown to plain text (.selftext)
 function removeMd(md, options) {
@@ -65,17 +69,17 @@ function htmlDecode(input){
     return e.childNodes.lenght === 0 ? "" : e.childNodes[0].nodeValue;
   }
 
-var after_string;
-
 function renderChallenges(after){
     $.getJSON(
     "https://www.reddit.com/r/dailyprogrammer/new.json" + after,
     function foo(data)
     {
       $.each(
-        data.data.children.slice(0, 100),
+        // TODO: partial loading
+        data.data.children,
         function (i, post) {
           if (post.data.title.indexOf('Challenge') !== -1 || post.data.title.indexOf('Weekly') !== -1){
+            // Parse difficulty
             var card_style = 'red';
             var diff = '<i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i>';
             if (post.data.title.indexOf('Easy') !== -1) {
@@ -89,16 +93,16 @@ function renderChallenges(after){
               diff='<i style="font-size:12px" class=" material-icons">lens</i>';
             }
             
-            if (after_string) {
-              var link = 'chall.html?i='+i+'&after='+after_string;
-            }
-            else{
-              var link = 'chall.html?i='+i;
-            }
+            var id = post.data.id;
+            console.log('Rendering challenge '+id);
+            var link = 'chall.html?id='+id;
+
+            // Beautify title
             var header = post.data.title.substring(27, post.data.title.lenght).replace("[Easy]", '').replace("[Easy/Med]", '').replace("[Easy/Intemerdiate]", '').replace("[Easy/Intermediate]", '').replace("[Hard]", '').replace("[Intermediate]", '');
+            // Description peek
             var body = removeMd(post.data.selftext).replace('Description','').substring(0,300)+ ' ...';
 
-            // Weekly
+            // Full title for weekly  (non-standard)
             if (card_style == 'blue') header = post.data.title.substring(0, post.data.title.lenght);
 
             // border-bottom: 1px solidf rgba(0, 0, 0, 0.12);
@@ -130,42 +134,54 @@ function renderChallenges(after){
               var text_color = 'black-text';
             }
 
-            
             var title_color = 'black';
             if (dark){
               card_color = 'black'
               text_color = 'white-text'
               title_color = 'white'
             }
-            var p1 = '<div id='+'"CH'+i+'"'+'class="col s12 m6 card ';
+
+            var p1 = '<div id="'+ id +'" class="col s12 m6 l5 xl4 card ';
 
             //var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
             var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
             var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
 
-            var idd = after_string +'_'+ i;
-            var row = '';
-            $("#all").append('<div id="'+idd.substring(7, idd.lenght)+'">'+card+'</div>');
+            if (cp == 0){
+              card2 = '<div class="row"><div class="hide-on-med-and-down col m1 l1 xl2">A</div>' + card
+              console.log("lx");
+              cp++;
+            }
+            else {
+              console.log("rx")
+              cp = 0;
+              card2 = card + '<div class="hide-on-med-and-down col m1 l1 xl2">B</div></div>'
+            }
             
-            $("#"+idd.substring(7, idd.lenght)).click(function(e){
+            $("#all").append(card2);
+            
+            $("#"+id).click(function(e){
               //e.preventDefault();
               window.location = link;    
             });
-
+            
+            // Mh
+            /*
             if (post.data.title.indexOf('Easy') !== -1) {
               $("#easy").append('<div id="a'+i+'">'+card_nodiff+'</div>');
             } else if (post.data.title.indexOf('Intermediate') !== -1) {
               $("#med").append('<div id="a'+i+'">'+card_nodiff+'</div>');
             } else if (post.data.title.indexOf('Hard') !== -1) {
               $("#hard").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-            }
+            }*/
 
-            $("#a"+i).click(function(e){
+            /*
+            $("#"+i).click(function(e){
               //e.preventDefault();
               window.location = link;    
             });
-
+            */
 
             /*$("#cc").append('<div class="row">  <div class="col s12 m6"><div class="card blue-grey darken-1">  <div class="card-content white-text">');
             $("#cc").append('<span class="card-title">'+ header + '</span>');
@@ -174,16 +190,18 @@ function renderChallenges(after){
             $("#cards").append('  <div class="card card-'+diff_col+'"> <div class="card-main"> <div class="card-inner"> <p class="card-heading" id="heading2">'+ header +'</p> <p>'+ body + '</p> </div> <div class="card-action"> <div class="card-action-btn pull-left"> <a class="btn btn-flat waves-attach" href="'+ link +'">&nbsp;GO TO CHALLENGE<span class="icon margin-left-sm">open_in_new</span></a></div></div></div> </div>');*/
           }
         }
-      )
+      );
       after_string = '?after='+ data.data.after;
+      loading = 0;
     }
   )
 }
 
 $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       //alert("bottom!");
+   if($(window).scrollTop() + $(window).height() == $(document).height() && !loading) {
+       console.log("reached bottom with after_string ="+after_string);
        renderChallenges(after_string);
+       loading = 1;
    }
 });
 
@@ -203,12 +221,12 @@ function hidePost(){
 function notifyUpdate(){
   vs = localStorage.getItem("version");
   if (vs < actual_version){
-    Materialize.toast('Application updated to version 0.9! Enjoy the new features', 5000)
+    Materialize.toast('Application updated to version 0.10! Enjoy the new features', 5000)
   }
   localStorage.setItem("version", actual_version);
 }
 
-actual_version = 9;
+actual_version = 10;
 notifyUpdate();
 renderChallenges('');
-hidePost();
+//hidePost();

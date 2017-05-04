@@ -1,7 +1,9 @@
 # dailyProgrammer
 <img src="http://51.254.100.118/dp_alpha/assets/2.jpg" width="300" height="300">
 
-<h2><a href="https://play.google.com/store/apps/details?id=avivace.daily_programmer">Play Store</a></h2>
+<h3><a href="https://play.google.com/store/apps/details?id=avivace.daily_programmer">Play Store</a></h3>
+### [Production web version](https://avivace.ovh/dp_zero)
+### [Dev branch web version](https://avivace.github.io/dailyprogrammer)
 
 A material design frontend to [/r/dailyprogrammer](https://reddit.com/r/dailyprogrammer) challenges.
 
