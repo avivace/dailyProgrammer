@@ -13,6 +13,12 @@ var loading = 0;
 var cp = 0;
 var row_id = 0;
 
+var diff_obj = {
+  easy: true,
+  med: true,
+  hard: true
+}
+
 // Markdown to plain text (.selftext)
 function removeMd(md, options) {
   options = options || {};
@@ -70,6 +76,61 @@ function htmlDecode(input){
     return e.childNodes.lenght === 0 ? "" : e.childNodes[0].nodeValue;
   }
 
+function isElementInViewport (el) {
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+}
+
+function showEasy(){
+  diff_obj = {
+    easy: true,
+    med: false,
+    hard: false
+  }
+  $("#all").html('');
+  renderChallenges('');
+}
+
+function showAll(){
+  diff_obj = {
+    easy: true,
+    med: true,
+    hard: true
+  }
+  $("#all").html('');
+  renderChallenges('');
+}
+
+function showMed(){
+  diff_obj = {
+    easy: false,
+    med: true,
+    hard: false
+  }
+  $("#all").html('');
+  renderChallenges('');
+}
+
+function showHard(){
+  diff_obj = {
+    easy: false,
+    med: false,
+    hard: true,
+  }
+  $("#all").html('');
+  renderChallenges('');
+}
+
 function renderChallenges(after){
     $.getJSON(
     "https://www.reddit.com/r/dailyprogrammer/new.json" + after,
@@ -82,136 +143,123 @@ function renderChallenges(after){
           if (post.data.title.indexOf('Challenge') !== -1 || post.data.title.indexOf('Weekly') !== -1){
             // Parse difficulty
             var card_style = 'red';
+            var difficulty = 'hard';
             var diff = '<i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i>';
             if (post.data.title.indexOf('Easy') !== -1) {
+              difficulty = 'easy';
               card_style='green';
               diff='<i style="font-size:12px" class=" material-icons">lens</i>';
             } else if (post.data.title.indexOf('Intermediate') !== -1) {
+              difficulty = 'med';
               card_style='orange';
               diff='<i style="font-size:12px" class=" material-icons">lens</i><i style="font-size:12px" class=" material-icons">lens</i>';
             } else if (post.data.title.indexOf('Weekly') !== -1) {
+              difficulty = 'weekly';
               card_style='blue';
               diff='<i style="font-size:12px" class=" material-icons">lens</i>';
             }
             
-            var id = post.data.id;
-            console.log('Rendering challenge '+id);
-            var link = 'chall.html?id='+id;
+            if (diff_obj[difficulty]){
+              var id = post.data.id;
+              console.log('Rendering challenge '+id);
+              var link = 'chall.html?id='+id;
 
-            // Beautify title
-            var header = post.data.title.substring(27, post.data.title.lenght).replace("[Easy]", '').replace("[Easy/Med]", '').replace("[Easy/Intemerdiate]", '').replace("[Easy/Intermediate]", '').replace("[Hard]", '').replace("[Intermediate]", '');
-            // Description peek
-            var body = removeMd(post.data.selftext).replace('Description','').substring(0,300)+ ' ...';
+              // Beautify title
+              var header = post.data.title.substring(27, post.data.title.lenght).replace("[Easy]", '').replace("[Easy/Med]", '').replace("[Easy/Intemerdiate]", '').replace("[Easy/Intermediate]", '').replace("[Hard]", '').replace("[Intermediate]", '');
+              // Description peek
+              var body = removeMd(post.data.selftext).replace('Description','').substring(0,300)+ ' ...';
 
-            // Full title for weekly  (non-standard)
-            if (card_style == 'blue') header = post.data.title.substring(0, post.data.title.lenght);
+              // Full title for weekly  (non-standard)
+              if (card_style == 'blue') header = post.data.title.substring(0, post.data.title.lenght);
 
-            // border-bottom: 1px solidf rgba(0, 0, 0, 0.12);
+              // Let's build the card
+              if (card_style == 'white'){
+                var card_color = 'white';
+                var text_color = 'black-text';
+              }
+              else if (card_style == 'red') {
+                var card_color = 'white';
+                var text_color = 'black-text';
+                var diff_col = '#F22613'; 
+              }
+              else if (card_style == 'green') {
+                var diff_col = '#26C281'; 
+                var card_color = 'white';
+                var text_color = 'black-text';
 
-            // Let's build the card
-            if (card_style == 'white'){
-              var card_color = 'white';
-              var text_color = 'black-text';
-            }
-            else if (card_style == 'red') {
-              var card_color = 'white';
-              var text_color = 'black-text';
-              var diff_col = '#F22613'; 
-            }
-            else if (card_style == 'green') {
-              var diff_col = '#26C281'; 
-              var card_color = 'white';
-              var text_color = 'black-text';
+              }
+              else if (card_style == 'orange') {
+                var diff_col = 'orange'; 
+                var card_color = 'white';
+                var text_color = 'black-text';
+              }
+              else if (card_style == 'blue') {
+                var diff_col = 'lightblue'; 
+                var card_color = 'white';
+                var text_color = 'black-text';
+              }
 
-            }
-            else if (card_style == 'orange') {
-              var diff_col = 'orange'; 
-              var card_color = 'white';
-              var text_color = 'black-text';
-            }
-            else if (card_style == 'blue') {
-              var diff_col = 'lightblue'; 
-              var card_color = 'white';
-              var text_color = 'black-text';
-            }
+              var title_color = 'black';
+              if (dark){
+                card_color = 'black'
+                text_color = 'white-text'
+                title_color = 'white'
+              }
 
-            var title_color = 'black';
-            if (dark){
-              card_color = 'black'
-              text_color = 'white-text'
-              title_color = 'white'
-            }
+              
+              var p1 = '<div id="'+ id +'" class="col s12 m6 l5 xl4"><div class="card ' + difficulty + ' ';
 
-            
-            var p1 = '<div id="'+ id +'" class="col s12 m6 l5 xl4"><div class="card ';
+              var card = p1+card_color+'" >  <div class="card-content"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div></div>';
+              var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+              
+              console.log("row " + row_id);
+              
+              if (cp == 0){
+                card2 = '<div class="hide-on-med-and-down col m1 l1 xl2"></div>' + card
+                console.log("lx");
+                cp = 1;
+                var row = '<div class="row" id="'+row_id+'"></div>'
+                $("#all").append(row);
+                $("#"+row_id).append(card2);
+                row_id++;
+              }
+              else if (cp == 1) {
+                console.log("rx")
+                cp = 0;
+                card2 = card + '<div class="hide-on-med-and-down col m1 l1 xl2"></div>'
+                $("#"+(row_id-1)).append(card2);
+              }
 
-            //var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
+              $("#"+id).click(function(e){
+                //e.preventDefault();
+                window.location = link;    
+              });
 
-            var card = p1+card_color+'" >  <div class="card-content"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div></div>';
-            var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
-            
-            console.log("row " + row_id);
-            
-            if (cp == 0){
-              card2 = '<div class="hide-on-med-and-down col m1 l1 xl2"></div>' + card
-              console.log("lx");
-              cp = 1;
-              var row = '<div class="row" id="'+row_id+'"></div>'
-              $("#all").append(row);
-              $("#"+row_id).append(card2);
-              row_id++;
-            }
-            else if (cp == 1) {
-              console.log("rx")
-              cp = 0;
-              card2 = card + '<div class="hide-on-med-and-down col m1 l1 xl2"></div>'
-              $("#"+(row_id-1)).append(card2);
-            }
-            
-
-            //$("#all").append(card2);
-            
-            $("#"+id).click(function(e){
-              //e.preventDefault();
-              window.location = link;    
-            });
-            
-            // Mh
-            /*
-            if (post.data.title.indexOf('Easy') !== -1) {
-              $("#easy").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-            } else if (post.data.title.indexOf('Intermediate') !== -1) {
-              $("#med").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-            } else if (post.data.title.indexOf('Hard') !== -1) {
-              $("#hard").append('<div id="a'+i+'">'+card_nodiff+'</div>');
-            }*/
-
-            /*
-            $("#"+i).click(function(e){
-              //e.preventDefault();
-              window.location = link;    
-            });
-            */
-
-            /*$("#cc").append('<div class="row">  <div class="col s12 m6"><div class="card blue-grey darken-1">  <div class="card-content white-text">');
-            $("#cc").append('<span class="card-title">'+ header + '</span>');
-            $("#cc").append('<p>Description PLACEHOLDER</p> </div> <div class="card-action"> <a href="#">GO TO CHALLENGE</a> </div> </div>  </div> </div>');
-
-            $("#cards").append('  <div class="card card-'+diff_col+'"> <div class="card-main"> <div class="card-inner"> <p class="card-heading" id="heading2">'+ header +'</p> <p>'+ body + '</p> </div> <div class="card-action"> <div class="card-action-btn pull-left"> <a class="btn btn-flat waves-attach" href="'+ link +'">&nbsp;GO TO CHALLENGE<span class="icon margin-left-sm">open_in_new</span></a></div></div></div> </div>');*/
-            
+            }            
           }
         }
       );
       after_string = '?after='+ data.data.after;
       loading = 0;
+      $("#loading").hide();
+      // NOTE: maybe this needs to be checked one time only
+      if ( isElementInViewport($("#bottom")[0]) ){
+        console.log("I can see the light with after_string ="+after_string);
+        renderChallenges(after_string);
+        $("#loading").show();
+        loading = 1;
+      }
     }
   )
 }
 
+
+// NOTE: give a ~5% tolerance to avoid having to bump to the bottom
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() == $(document).height() && !loading) {
        console.log("reached bottom with after_string ="+after_string);
        renderChallenges(after_string);
+       $("#loading").show();
        loading = 1;
    }
 });
@@ -240,4 +288,4 @@ function notifyUpdate(){
 actual_version = 10;
 notifyUpdate();
 renderChallenges('');
-//hidePost();
+hidePost();

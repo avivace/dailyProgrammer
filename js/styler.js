@@ -1,4 +1,5 @@
 var dark;
+var webview = true;
 
 function styler(attr){
   var href;
@@ -12,6 +13,7 @@ function styler(attr){
         Android.sbColor(255,158,158,158);
       } catch (e) {
         console.log('not running in a android webview');
+        webview = false;
       }
       dark = false;
       break;
@@ -22,6 +24,7 @@ function styler(attr){
         Android.sbColor(255,0,0,0);
       } catch (e) {
         console.log('not running in a android webview');
+        webview = false;
       }
       dark = true;
       break;

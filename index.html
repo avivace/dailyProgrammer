@@ -34,6 +34,10 @@ admin@avivace.ovh
       <a style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo center">dailyProgrammer</a>
       <!-- Mobile -->
       <a href="#" onlick="sideNav()" data-activates="mobile-demo" class="black-text button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="left hide-on-med-and-down">
+<li>   <a class='dropdown-button btn-flat' href='#' data-activates='dropdown1'><i class="material-icons left">filter_list</i><b>Difficulty</b></a>
+</li>
+      </ul>
       <ul class="right hide-on-med-and-down">
         <li class="active"><a class="black-text" href="index.html"><i class="material-icons left">view_agenda</i>Challenges</a></li>
         <li><a class="black-text" href="settings.html"><i class="material-icons left">settings</i>Settings</a></li>
@@ -48,77 +52,29 @@ admin@avivace.ovh
       </ul>
     </div>
     <div class="nav-content">
-      <ul class="black-text tabs tabs-transparent hide-on-med-and-up">
-        <li class="tab col s3"><a class="active" href="#all">All</a>
+      <ul class="black-text tabs tabs-transparent hide-on-large-only">
+        <li class="tab col s3"><a onClick="showAll()" class="active" href="#">All</a>
         </li>
-        <li class="tab col s3"><a href="#easy">Easy</a></li>
-        <li class="tab col s3"><a href="#med">Medium</a></li>
-        <li class="tab col s3"><a href="#hard">Hard</a></li>
+        <li class="tab col s3"><a onClick="showEasy()" href="#">Easy</a></li>
+        <li class="tab col s3"><a onClick="showMed()" href="#">Medium</a></li>
+        <li class="tab col s3"><a onClick="showHard()" href="#">Hard</a></li>
       </ul>
     </div>
   </nav>
          
-
-  <!-- Tabs TODO: colored tab titles? (on select)-->
-    
-      <div id="all">
-      <br>
-      </div>
-
-    <div id="easy" class="col s12"></div>
-    <div id="med" class="col s12"></div>
-    <div id="hard" class="col s12"></div>
-
-    <div id="test"></div>
-    <div id="loading" style="text-align: center">
-
-      <br><br><br>
-      <!--<i class="loading fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>-->
-      <span class="sr-only">Loading...</span>
-          <div class="preloader-wrapper active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-red">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-yellow">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-green">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
+  <!-- Difficulty filter dropdown structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a onClick="showAll()" href="#">all</a></li>
+    <li><a onClick="showEasy()" href="#">easy</a></li>
+    <li><a onClick="showMed()" href="#">medium</a></li>
+    <li><a onClick="showHard()" href="#">hard</a></li>
+  </ul>
         
-    </div>
-  </div>
+    <div id="all"></div>
+    <div id="loading"><br><center> <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+   <circle class="path" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+</svg></center></div>
+    <div id="bottom"></div>
 
   <!--  Scripts  -->
   <script src="js/styler.js"></script>
