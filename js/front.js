@@ -11,6 +11,7 @@
 var after_string;
 var loading = 0;
 var cp = 0;
+var row_id = 0;
 
 // Markdown to plain text (.selftext)
 function removeMd(md, options) {
@@ -141,25 +142,34 @@ function renderChallenges(after){
               title_color = 'white'
             }
 
+            
             var p1 = '<div id="'+ id +'" class="col s12 m6 l5 xl4 card ';
 
             //var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
-            var card = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+            var card = p1+card_color+'" >  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
             var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
-
+            
+            console.log("row " + row_id);
+            
             if (cp == 0){
-              card2 = '<div class="row"><div class="hide-on-med-and-down col m1 l1 xl2">A</div>' + card
+              card2 = '<div class="hide-on-med-and-down col m1 l1 xl2"></div>' + card
               console.log("lx");
-              cp++;
+              cp = 1;
+              var row = '<div class="row" id="'+row_id+'"></div>'
+              $("#all").append(row);
+              $("#"+row_id).append(card2);
+              row_id++;
             }
-            else {
+            else if (cp == 1) {
               console.log("rx")
               cp = 0;
-              card2 = card + '<div class="hide-on-med-and-down col m1 l1 xl2">B</div></div>'
+              card2 = card + '<div class="hide-on-med-and-down col m1 l1 xl2"></div>'
+              $("#"+(row_id-1)).append(card2);
             }
             
-            $("#all").append(card2);
+
+            //$("#all").append(card2);
             
             $("#"+id).click(function(e){
               //e.preventDefault();
@@ -188,6 +198,7 @@ function renderChallenges(after){
             $("#cc").append('<p>Description PLACEHOLDER</p> </div> <div class="card-action"> <a href="#">GO TO CHALLENGE</a> </div> </div>  </div> </div>');
 
             $("#cards").append('  <div class="card card-'+diff_col+'"> <div class="card-main"> <div class="card-inner"> <p class="card-heading" id="heading2">'+ header +'</p> <p>'+ body + '</p> </div> <div class="card-action"> <div class="card-action-btn pull-left"> <a class="btn btn-flat waves-attach" href="'+ link +'">&nbsp;GO TO CHALLENGE<span class="icon margin-left-sm">open_in_new</span></a></div></div></div> </div>');*/
+            
           }
         }
       );
