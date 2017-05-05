@@ -143,11 +143,11 @@ function renderChallenges(after){
             }
 
             
-            var p1 = '<div id="'+ id +'" class="col s12 m6 l5 xl4 card ';
+            var p1 = '<div id="'+ id +'" class="col s12 m6 l5 xl4"><div class="card ';
 
             //var card_o = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="card-title '+text_color+'">'+header+'</span><p class="'+text_color+'">'+body+'</p></div><div class="card-action"><a href="'+link+'" style="font-weight: 500;" class="'+text_color+'">GO TO CHALLENGE &nbsp;<i style="vertical-align: -15%; font-size: 16px;" class="material-icons">launch</i></a>  <a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 0px"><b> '+diff+'</b> </a></div></div>';
 
-            var card = p1+card_color+'" >  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
+            var card = p1+card_color+'" >  <div class="card-content"><span class="truncate card-title '+text_color+'"><a style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><div class="chip" style="font-size: 12px ;color:'+ diff_col +'; position: absolute; right: 3%"><b> '+diff+'</b> </div></span><p class="'+text_color+'">'+body+'</p></div></div></div></div>';
             var card_nodiff = p1+card_color+'">  <div class="card-content" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"><span class="truncate card-title '+text_color+'"><a  style="color: '+ title_color +'; text-shadow: 1px 1px 2px #BBB;">'+ header+'</a><a style="font-size: 14px ;color:'+ diff_col +'; position: absolute; right: 3%"><b></b> </a></span><p class="'+text_color+'">'+body+'</p></div></div></div>';
             
             console.log("row " + row_id);

@@ -25,12 +25,18 @@
 }
 
 .card {
+  cursor: pointer;
   position: relative;
   margin: 0.4rem 0 0.4rem 0;
+  padding: 0rem 0.3rem 0.3rem 0.3rem;
   /* margin: 0.5rem 0.5rem 0.1rem 0; */
   background-color: #fff;
   border-radius: 5px;
   width: 100%;
+}
+
+.cardwrapper {
+  /*padding: 1rem 1rem 1rem 1rem;*/
 }
 
 .chip {
