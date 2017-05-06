@@ -4,39 +4,35 @@ admin@avivace.ovh
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Daily Programmer</title>
-
-  <!-- CSS  -->
-  <style>
-  body {
-      word-wrap: break-word !important;
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Daily Programmer</title>
+    <!-- CSS  -->
+    <style>
+    body {
+    word-wrap: break-word !important;
     }
-  </style>
-  
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="" id="styleSheet" type="text/css" rel="stylesheet" media="screen,projection"/>
-  
-
-  <!--<link href="" id="styleSheet" type="text/css" rel="stylesheet" media="screen,projection"/>-->
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-</head>
-
-<body>
-  <!-- NAVBAR -->
-  <nav id="nav" class="nav-extended grey lighten-1">
-    <div class="nav-wrapper">
-      <a style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo center">dailyProgrammer</a>
-      <!-- Mobile -->
-      <a href="#" onlick="sideNav()" data-activates="mobile-demo" class="black-text button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="left hide-on-med-and-down">
-<li>   <a class='dropdown-button btn-flat' href='#' data-activates='dropdown1'><i class="material-icons left">filter_list</i><b>Difficulty</b></a>
-</li>
+    </style>
+    
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="" id="styleSheet" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
+    <!--<link href="" id="styleSheet" type="text/css" rel="stylesheet" media="screen,projection"/>-->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav id="nav" class="nav-extended grey lighten-1">
+      <div class="nav-wrapper">
+        <a style="font-size: 1.7em; font-weight: 300;" class="black-text brand-logo center">dailyProgrammer</a>
+        <!-- Mobile -->
+        <a href="#" onlick="sideNav()" data-activates="mobile-demo" class="black-text button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+          <li>   <a class='dropdown-button btn-flat' href='#' data-activates='dropdown1'><i class="material-icons left">filter_list</i><b>Difficulty</b></a>
+        </li>
       </ul>
       <ul class="right hide-on-med-and-down">
         <li class="active"><a class="black-text" href="index.html"><i class="material-icons left">view_agenda</i>Challenges</a></li>
@@ -54,39 +50,53 @@ admin@avivace.ovh
     <div class="nav-content">
       <ul class="black-text tabs tabs-transparent hide-on-large-only">
         <li class="tab col s3"><a onClick="showAll()" class="active" href="#">All</a>
-        </li>
-        <li class="tab col s3"><a onClick="showEasy()" href="#">Easy</a></li>
-        <li class="tab col s3"><a onClick="showMed()" href="#">Medium</a></li>
-        <li class="tab col s3"><a onClick="showHard()" href="#">Hard</a></li>
-      </ul>
-    </div>
-  </nav>
-         
-  <!-- Difficulty filter dropdown structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a onClick="showAll()" href="#">all</a></li>
-    <li><a onClick="showEasy()" href="#">easy</a></li>
-    <li><a onClick="showMed()" href="#">medium</a></li>
-    <li><a onClick="showHard()" href="#">hard</a></li>
-  </ul>
-        
-    <div id="all"></div>
-    <div id="loading"><br><center> <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-   <circle class="path" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </li>
+      <li class="tab col s3"><a onClick="showEasy()" href="#">Easy</a></li>
+      <li class="tab col s3"><a onClick="showMed()" href="#">Medium</a></li>
+      <li class="tab col s3"><a onClick="showHard()" href="#">Hard</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Difficulty filter dropdown structure -->
+<ul id='dropdown1' class='dropdown-content'>
+  <li><a onClick="showAll()" href="#">all</a></li>
+  <li><a onClick="showEasy()" href="#">easy</a></li>
+  <li><a onClick="showMed()" href="#">medium</a></li>
+  <li><a onClick="showHard()" href="#">hard</a></li>
+</ul>
+<div class="row">
+  <div class="hide-on-med-and-down col m1 l1 xl2"></div>
+  <div class="col s12 m12 l10 xl8">
+<div id="notification" class="card blue-grey darken-1">
+  <div class="card-content white-text">
+    <span class="card-title">Join our community!</span>
+    <p style="font-size: 16px">Thank you everybody! We are more than <b>4000</b> weekly users, let's build a community and discuss the challenges, compare solutions, provide feedback on this application and talk about nerd stuff.</p>
+  </div>
+  <div class="card-action">
+    <a target="_blank" href="https://t.me/dailyprogrammer">Telegram&nbsp;Chat</a>
+    <a target="_blank" href="https://discord.gg/feXdA9V">Discord&nbsp;Server</a>
+    <a onclick="hideN()" href="#">Hide&nbsp;message</a>
+  </div>
+</div>
+</div>
+<div class="hide-on-med-and-down col m1 l1 xl2"></div>
+</div>
+<div id="all"></div>
+<div id="loading"><br><center> <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+  <circle class="path" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
 </svg></center></div>
-    <div id="bottom"></div>
+<div id="bottom"></div>
+<!--  Scripts  -->
+<script src="js/styler.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script src="js/hammer.min.js"></script>
+<script src="js/hammer-time.min.js"></script>
+<script src="js/front.js"></script>
+<script src="js/analytics.js"></script>
+<script src="https://use.fontawesome.com/0eaed8d23a.js"></script>
 
-  <!--  Scripts  -->
-  <script src="js/styler.js"></script>
-  <script src="js/jquery-3.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/hammer.min.js"></script>
-  <script src="js/hammer-time.min.js"></script>
-  <script src="js/front.js"></script>
-  <script src="js/analytics.js"></script>
-  <script src="https://use.fontawesome.com/0eaed8d23a.js"></script>
-
-  
-  </body>
+</body>
 </html>

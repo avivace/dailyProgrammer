@@ -3,15 +3,14 @@
       twitter.com/avivace4 - www.avivace.ovh
 
       Renders the challenge list, with title and a description peek for every
-      challenge.
-
-      0.10
+      challenge. Handles difficulty filtering.
 */
 
 var after_string;
 var loading = 0;
 var cp = 0;
 var row_id = 0;
+var actual_version = 10;
 
 var diff_obj = {
   easy: true,
@@ -70,13 +69,13 @@ function removeMd(md, options) {
 };
 
 // Pre render HTML (.selftext_html)
-function htmlDecode(input){
+function htmlDecode(input) {
   var e = document.createElement('div');
   e.innerHTML = input;
     return e.childNodes.lenght === 0 ? "" : e.childNodes[0].nodeValue;
   }
 
-function isElementInViewport (el) {
+function isElementInViewport(el) {
     if (typeof jQuery === "function" && el instanceof jQuery) {
         el = el[0];
     }
@@ -253,17 +252,6 @@ function renderChallenges(after){
   )
 }
 
-
-// NOTE: give a ~5% tolerance to avoid having to bump to the bottom
-$(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height() && !loading) {
-       console.log("reached bottom with after_string ="+after_string);
-       renderChallenges(after_string);
-       $("#loading").show();
-       loading = 1;
-   }
-});
-
 function hideN(){
   localStorage.setItem("hideN", true);
   Materialize.toast('You can still find those links in the About page', 5000)
@@ -285,7 +273,16 @@ function notifyUpdate(){
   localStorage.setItem("version", actual_version);
 }
 
-actual_version = 10;
+// NOTE: give a ~5% tolerance to avoid having to bump to the bottom
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height() && !loading) {
+       console.log("reached bottom with after_string ="+after_string);
+       renderChallenges(after_string);
+       $("#loading").show();
+       loading = 1;
+   }
+});
+
+hidePost();
 notifyUpdate();
 renderChallenges('');
-hidePost();
