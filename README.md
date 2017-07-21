@@ -3,7 +3,7 @@
 
 <h3><a href="https://play.google.com/store/apps/details?id=avivace.daily_programmer">Play Store</a></h3>
 
-### [Production web version](https://avivace.ovh/dp_zero)
+### [Production web version](https://dp.avivace.com)
 ### [Dev branch web version](https://avivace.github.io/dailyProgrammer)
 
 A material design frontend to [/r/dailyprogrammer](https://reddit.com/r/dailyprogrammer) challenges.
